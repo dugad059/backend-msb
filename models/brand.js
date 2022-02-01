@@ -7,6 +7,7 @@ const brandSchema = new Schema({
     industry: {type: String, required: false},
     description: {type: String, required: false},
     image: {type: String, required: false},
+    uid: {type: String, required: false},  // for auth
 }, {timestamp: true});
 
 module.exports = mongoose.model('Brand', brandSchema)
