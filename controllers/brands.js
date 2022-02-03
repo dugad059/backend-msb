@@ -2,6 +2,7 @@ const express = require('express');
 const brandsRouter = express.Router();
 const Brand = require('../models/brand')
 
+
 function isAuthenticated(req, res, next) {
     if(!req.user) return res.status(401).json({message: 'you must be logged in first'})
     next();
@@ -17,7 +18,7 @@ brandsRouter.get('/', async (req, res) => {
 });
 
 // Create
-brandsRouter.post('/', isAuthenticated, async(req, res) => {
+brandsRouter.post('/', isAuthenticated, async (req, res) => {
     try {
         req.body.uid = req.user.uid;
         res.json(await Brand.create(req.body))
